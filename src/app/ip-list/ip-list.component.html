@@ -1,0 +1,31 @@
+<div class="wrapper">
+
+    <div [formGroup]="addForm" >
+      <div class="form-group">
+        <label for="exampleInputEmail1">Введите IP-адрес</label>
+        <small *ngIf="errorMsg" class="m-4 errorMsg form-text">{{errorMsg}}</small>
+        <input type="text" class="form-control"  id="exampleInputIp" formControlName = "ip" placeholder="Enter IP">
+      </div>
+      <button type="submit" class="btn btn-primary m-2" (click)="send()" [disabled]="addForm.invalid">Добавить</button>
+    </div>
+
+    <div class=" mt-3">
+      <div class="row m-2 border p-2  head" >
+        <div class="col">ip</div>
+        <div class="col">continent</div>
+        <div class="col">country</div>
+        <div class="col">country_capital</div>
+        <div class="col"></div>
+    </div>
+    <div class="row m-2 border p-2 item-ip" *ngFor="let item of ipList" >
+        <div class="col">{{item?.ip}}</div>
+        <div class="col">{{item?.continent}}</div>
+        <div class="col">{{item?.country}}</div>
+        <div class="col">{{item?.country_capital}}</div>
+        <div class="col"><button type="button" class="btn btn-danger" (click)="remove(item.ip)">Удалить</button></div>
+    </div>
+  </div>
+
+</div>
+
+
